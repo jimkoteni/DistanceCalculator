@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using DistanceCalculator.Business.Integrations.AirportService;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -43,17 +44,23 @@ namespace DistanceCalculator.Business.Features.Airport.Queries
 		/// </summary>
 		public class Handler : IRequestHandler<Query, Result>
 		{
+			private readonly IAirportService _airportService;
 			private readonly ILogger<Query> _logger;
 
 			/// <summary>
 			/// Initializes a new instance of the <see cref="Handler"/> class.
 			/// </summary>
+			/// <param name="airportService">Airport service.</param>
 			/// <param name="logger">Logger.</param>
-			public Handler(ILogger<Query> logger)
+			public Handler(
+				IAirportService airportService,
+				ILogger<Query> logger)
 			{
+				_airportService = airportService;
 				_logger = logger;
 			}
 
+			/// <inheritdoc/>
 			public async Task<Result> Handle(Query query, CancellationToken ct)
 			{
 				_logger.LogDebug("Retrieving airports: {QueryFromAirportCode} and {QueryToAirportCode}",

@@ -9,9 +9,15 @@
       <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.0" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+      <PackageReference Include="RestEase" Version="1.6.0" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
     </ItemGroup>
 
     <ItemGroup>
+      <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+        <HintPath>..\..\..\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.17\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+      </Reference>
       <Reference Include="Microsoft.Extensions.Logging.Abstractions">
         <HintPath>..\..\..\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.17\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
       </Reference>

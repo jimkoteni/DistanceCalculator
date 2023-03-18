@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DistanceCalculator.Business.Features.Airport.Queries;
+using DistanceCalculator.Business.Integrations.AirportService;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +36,11 @@ namespace DistanceCalculator.Api
 			});
 			
 			services.AddMediatR(typeof(GetDistance));
+
+			services.AddTransient<IAirportClientFactory, AirportClientFactory>();
+			services.AddTransient<IAirportService, AirportService>();
+			services.AddHttpClient(AirportClientSettings.ClientName);
+			services.Configure<AirportClientSettings>(Configuration.GetSection(AirportClientSettings.ClientName));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
