@@ -5,12 +5,17 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="11.0.0" />
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+      <PackageReference Include="FluentValidation" Version="10.0.4" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.0.4" />
       <PackageReference Include="MediatR" Version="10.0.0" />
       <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.0" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
       <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
       <PackageReference Include="RestEase" Version="1.6.0" />
+      <PackageReference Include="Scrutor" Version="4.0.0" />
       <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
     </ItemGroup>
 

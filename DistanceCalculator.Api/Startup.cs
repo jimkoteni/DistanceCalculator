@@ -1,5 +1,7 @@
+using DistanceCalculator.Business;
 using DistanceCalculator.Business.DistanceCalculator;
 using DistanceCalculator.Business.Features.Airport.Queries;
+using DistanceCalculator.Business.Infrastructure;
 using DistanceCalculator.Business.Integrations.AirportService;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -37,6 +39,9 @@ namespace DistanceCalculator.Api
 			services.Configure<AirportClientSettings>(Configuration.GetSection(AirportClientSettings.ClientName));
 
 			services.AddTransient<IDistanceCalculator, Business.DistanceCalculator.DistanceCalculator>();
+
+			services.AddFluentValidation();
+			services.AddAutoMapper(typeof(BusinessLayer));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
