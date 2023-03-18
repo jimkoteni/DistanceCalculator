@@ -1,9 +1,12 @@
+using System;
+using DistanceCalculator.Api.Handlers;
 using DistanceCalculator.Business;
 using DistanceCalculator.Business.DistanceCalculator;
 using DistanceCalculator.Business.Features.Airport.Queries;
 using DistanceCalculator.Business.Infrastructure;
 using DistanceCalculator.Business.Integrations.AirportService;
 using MediatR;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,10 +28,37 @@ namespace DistanceCalculator.Api
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddAuthentication(ApiKeyAuthentication.DefaultScheme)
+				.AddScheme<AuthenticationSchemeOptions, ApiKeyAuthenticationHandler>(ApiKeyAuthentication.DefaultScheme, null);
+			
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "DistanceCalculator.Api", Version = "v1" });
+				
+				c.AddSecurityDefinition(
+					"Bearer",
+					new OpenApiSecurityScheme
+					{
+						In = ParameterLocation.Header,
+						Name = ApiKeyAuthentication.ApiKeyHeader,
+					});
+
+				c.AddSecurityRequirement(new OpenApiSecurityRequirement
+				{
+					{
+						new OpenApiSecurityScheme
+						{
+							Reference = new OpenApiReference
+							{
+								Type = ReferenceType.SecurityScheme,
+								Id = "Bearer",
+							},
+							Name = "Bearer",
+						},
+						Array.Empty<string>()
+					},
+				});
 			});
 			
 			services.AddMediatR(typeof(GetDistance));
@@ -58,6 +88,7 @@ namespace DistanceCalculator.Api
 
 			app.UseRouting();
 
+			app.UseAuthentication();
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints => { endpoints.MapControllers(); });

@@ -2,11 +2,13 @@
 using System.Threading.Tasks;
 using DistanceCalculator.Business.Features.Airport.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace DistanceCalculator.Api.Controllers
 {
+	[Authorize]
 	[ApiController]
 	[Route("[controller]")]
 	public class DistanceController : ControllerBase
