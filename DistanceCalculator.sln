@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistanceCalculator.Api", "DistanceCalculator.Api\DistanceCalculator.Api.csproj", "{7FBA7331-4E56-475C-91EF-786F380546EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistanceCalculator.Business", "DistanceCalculator.Business\DistanceCalculator.Business.csproj", "{EF14CAC3-8E1B-469E-97FB-A02344ACF7BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{7FBA7331-4E56-475C-91EF-786F380546EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FBA7331-4E56-475C-91EF-786F380546EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FBA7331-4E56-475C-91EF-786F380546EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF14CAC3-8E1B-469E-97FB-A02344ACF7BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF14CAC3-8E1B-469E-97FB-A02344ACF7BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF14CAC3-8E1B-469E-97FB-A02344ACF7BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF14CAC3-8E1B-469E-97FB-A02344ACF7BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
