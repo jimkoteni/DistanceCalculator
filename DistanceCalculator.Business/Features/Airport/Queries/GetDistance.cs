@@ -1,6 +1,6 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using DistanceCalculator.Business.DistanceCalculator;
 using DistanceCalculator.Business.Integrations.AirportService;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -45,18 +45,22 @@ namespace DistanceCalculator.Business.Features.Airport.Queries
 		public class Handler : IRequestHandler<Query, Result>
 		{
 			private readonly IAirportService _airportService;
+			private readonly IDistanceCalculator _calculator;
 			private readonly ILogger<Query> _logger;
 
 			/// <summary>
 			/// Initializes a new instance of the <see cref="Handler"/> class.
 			/// </summary>
 			/// <param name="airportService">Airport service.</param>
+			/// <param name="calculator">Distance calculator.</param>
 			/// <param name="logger">Logger.</param>
 			public Handler(
 				IAirportService airportService,
+				IDistanceCalculator calculator,
 				ILogger<Query> logger)
 			{
 				_airportService = airportService;
+				_calculator = calculator;
 				_logger = logger;
 			}
 

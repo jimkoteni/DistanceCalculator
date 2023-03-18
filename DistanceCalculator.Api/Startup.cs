@@ -1,18 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using DistanceCalculator.Business.DistanceCalculator;
 using DistanceCalculator.Business.Features.Airport.Queries;
 using DistanceCalculator.Business.Integrations.AirportService;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace DistanceCalculator.Api
@@ -41,6 +35,8 @@ namespace DistanceCalculator.Api
 			services.AddTransient<IAirportService, AirportService>();
 			services.AddHttpClient(AirportClientSettings.ClientName);
 			services.Configure<AirportClientSettings>(Configuration.GetSection(AirportClientSettings.ClientName));
+
+			services.AddTransient<IDistanceCalculator, Business.DistanceCalculator.DistanceCalculator>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
